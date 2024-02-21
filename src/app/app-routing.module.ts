@@ -49,8 +49,8 @@ const routes: VexRoutes = [
             loadChildren: () => import('./pages/apps/contacts/contacts.module').then(m => m.ContactsModule)
           },
           {
-            path: 'aio-table',
-            loadChildren: () => import('./pages/apps/aio-table/aio-table.module').then(m => m.AioTableModule),
+            path: 'users',
+            loadChildren: () => import('./pages/apps/user-table/user-table.module').then(m => m.UserTableModule),
           },
           {
             path: 'editor',

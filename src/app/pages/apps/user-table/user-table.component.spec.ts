@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { AioTableComponent } from './aio-table.component';
+import { UserTableComponent } from './user-table.component';
 
-describe('AioTableComponent', () => {
-  let component: AioTableComponent;
-  let fixture: ComponentFixture<AioTableComponent>;
+describe('UserTableComponent', () => {
+  let component: UserTableComponent;
+  let fixture: ComponentFixture<UserTableComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [AioTableComponent]
+      declarations: [UserTableComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AioTableComponent);
+    fixture = TestBed.createComponent(UserTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

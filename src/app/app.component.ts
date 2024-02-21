@@ -118,8 +118,8 @@ export class AppComponent {
         children: [
           {
             type: 'link',
-            label: 'All-In-One Table',
-            route: '/apps/aio-table',
+            label: 'Users',
+            route: '/apps/users',
             icon: 'mat:assignment'
           },
           {

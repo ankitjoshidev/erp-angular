@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AioTableRoutingModule } from './aio-table-routing.module';
-import { AioTableComponent } from './aio-table.component';
+import { AioTableRoutingModule } from './user-table-routing.module';
+import { UserTableComponent } from './user-table.component';
 import { PageLayoutModule } from '../../../../@vex/components/page-layout/page-layout.module';
 import { BreadcrumbsModule } from '../../../../@vex/components/breadcrumbs/breadcrumbs.module';
-import { CustomerCreateUpdateModule } from './customer-create-update/customer-create-update.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
@@ -17,16 +16,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { UserCreateUpdateModule } from './user-create-update/user-create-update.module';
+import { CommonApiService } from 'src/app/services/api.service';
 
 
 @NgModule({
-  declarations: [AioTableComponent],
+  declarations: [UserTableComponent],
   imports: [
     CommonModule,
     AioTableRoutingModule,
     PageLayoutModule,
     BreadcrumbsModule,
-    CustomerCreateUpdateModule,
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
@@ -34,13 +34,14 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
-
+    UserCreateUpdateModule,
     FormsModule,
     MatTooltipModule,
     ReactiveFormsModule,
     MatSelectModule,
     MatButtonToggleModule
-  ]
+  ],
+  providers:[CommonApiService]
 })
-export class AioTableModule {
+export class UserTableModule {
 }

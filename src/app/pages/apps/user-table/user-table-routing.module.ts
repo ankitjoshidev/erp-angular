@@ -1,14 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { QuicklinkModule } from 'ngx-quicklink';
 import { VexRoutes } from '../../../../@vex/interfaces/vex-route.interface';
-import { AioTableComponent } from './aio-table.component';
+import { UserTableComponent } from './user-table.component';
+import { UserCreateUpdateComponent } from './user-create-update/user-create-update.component';
 
 
 const routes: VexRoutes = [
   {
     path: '',
-    component: AioTableComponent,
+    component: UserTableComponent,
+    data: {
+      toolbarShadowEnabled: false
+    }
+  },
+  {
+    path: 'form',
+    component: UserCreateUpdateComponent,
     data: {
       toolbarShadowEnabled: false
     }
@@ -17,7 +24,7 @@ const routes: VexRoutes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule, QuicklinkModule]
+  exports: [RouterModule]
 })
 export class AioTableRoutingModule {
 }
