@@ -42,7 +42,6 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     map(() => checkRouterChildsData(this.router.routerState.root.snapshot, data => data.containerEnabled))
   );
 
-  searchOpen$ = this.layoutService.searchOpen$;
 
   @ViewChild('quickpanel', { static: true }) quickpanel: MatSidenav;
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;

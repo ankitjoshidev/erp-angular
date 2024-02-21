@@ -24,9 +24,6 @@ export class LayoutService {
   private _configpanelOpenSubject = new BehaviorSubject<boolean>(false);
   configpanelOpen$ = this._configpanelOpenSubject.asObservable();
 
-  private _searchOpen = new BehaviorSubject<boolean>(false);
-  searchOpen$ = this._searchOpen.asObservable();
-
   isDesktop$ = this.breakpointObserver.observe(`(min-width: 1280px)`).pipe(
     map(state => state.matches)
   );
@@ -93,11 +90,4 @@ export class LayoutService {
     this._configpanelOpenSubject.next(false);
   }
 
-  openSearch() {
-    this._searchOpen.next(true);
-  }
-
-  closeSearch() {
-    this._searchOpen.next(false);
-  }
 }

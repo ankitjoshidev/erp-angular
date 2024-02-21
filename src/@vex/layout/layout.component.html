@@ -8,12 +8,9 @@
      [class.toolbar-fixed]="isToolbarFixed$ | async"
      [class.sidenav-collapsed]="sidenavCollapsed$ | async"
      [class.content-container]="containerEnabled$ | async"
-     [class.with-search]="searchOpen$ | async"
      class="page-container">
 
   <vex-progress-bar></vex-progress-bar>
-
-  <vex-search></vex-search>
 
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav

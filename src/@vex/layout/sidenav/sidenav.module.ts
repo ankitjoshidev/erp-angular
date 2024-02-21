@@ -9,7 +9,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatRippleModule } from '@angular/material/core';
 import { UserMenuModule } from '../../components/user-menu/user-menu.module';
 import { MatDialogModule } from '@angular/material/dialog';
-import { SearchModalComponent } from '../../components/search-modal/search-modal.component';
 
 
 @NgModule({
@@ -23,9 +22,7 @@ import { SearchModalComponent } from '../../components/search-modal/search-modal
     MatIconModule,
     MatDialogModule,
     MatRippleModule,
-    UserMenuModule,
-
-    SearchModalComponent
+    UserMenuModule
   ],
   exports: [SidenavComponent]
 })

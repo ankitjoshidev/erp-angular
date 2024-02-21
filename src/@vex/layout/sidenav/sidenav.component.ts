@@ -8,7 +8,6 @@ import { PopoverService } from '../../components/popover/popover.service';
 import { Observable, of } from 'rxjs';
 import { UserMenuComponent } from '../../components/user-menu/user-menu.component';
 import { MatDialog } from '@angular/material/dialog';
-import { SearchModalComponent } from '../../components/search-modal/search-modal.component';
 
 @Component({
   selector: 'vex-sidenav',
@@ -76,11 +75,4 @@ export class SidenavComponent implements OnInit {
     );
   }
 
-  openSearch(): void {
-    this.dialog.open(SearchModalComponent, {
-      panelClass: 'vex-dialog-glossy',
-      width: '100%',
-      maxWidth: '600px'
-    });
-  }
 }

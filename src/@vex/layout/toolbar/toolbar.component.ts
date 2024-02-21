@@ -70,7 +70,4 @@ export class ToolbarComponent {
     );
   }
 
-  openSearch(): void {
-    this.layoutService.openSearch();
-  }
 }

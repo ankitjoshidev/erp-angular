@@ -4,7 +4,6 @@ import { LayoutComponent } from './layout.component';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { ProgressBarModule } from '../components/progress-bar/progress-bar.module';
-import { SearchModule } from '../components/search/search.module';
 
 
 @NgModule({
@@ -13,8 +12,7 @@ import { SearchModule } from '../components/search/search.module';
     CommonModule,
     RouterModule,
     MatSidenavModule,
-    ProgressBarModule,
-    SearchModule
+    ProgressBarModule
   ],
   exports: [LayoutComponent]
 })
