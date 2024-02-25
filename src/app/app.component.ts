@@ -138,6 +138,41 @@ export class AppComponent {
             label: 'Contacts',
             route: '/apps/contacts',
             icon: 'mat:contacts'
+          },
+          {
+            type: 'link',
+            label: 'Scrumboard',
+            route: '/apps/scrumboard',
+            icon: 'mat:assessment',
+            badge: {
+              value: 'NEW',
+              bgClass: 'bg-primary',
+              textClass: 'text-primary-contrast',
+            }
+          },
+          {
+            type: 'dropdown',
+            label: 'Social',
+            icon: 'mat:person_outline',
+            children: [
+              {
+                type: 'link',
+                label: 'Profile',
+                route: '/apps/social',
+                routerLinkActiveOptions: { exact: true }
+              },
+              {
+                type: 'link',
+                label: 'Timeline',
+                route: '/apps/social/timeline'
+              },
+            ]
+          },
+          {
+            type: 'link',
+            label: 'Mailbox',
+            route: '/apps/mail',
+            icon: 'mat:mail',
           }
         ]
       }

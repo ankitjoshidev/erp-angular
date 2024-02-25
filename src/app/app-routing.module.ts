@@ -56,6 +56,29 @@ const routes: VexRoutes = [
             path: 'editor',
             loadChildren: () => import('./pages/apps/editor/editor.module').then(m => m.EditorModule),
           },
+          {
+            path: 'mail',
+            loadChildren: () => import('./pages/apps/mail/mail.module').then(m => m.MailModule),
+            data: {
+              toolbarShadowEnabled: true,
+              scrollDisabled: true
+            }
+          },
+          {
+            path: 'social',
+            loadChildren: () => import('./pages/apps/social/social.module').then(m => m.SocialModule)
+          },
+          {
+            path: 'calendar',
+            loadChildren: () => import('./pages/apps/calendar/calendar.module').then(m => m.CalendarModule),
+            data: {
+              toolbarShadowEnabled: true
+            }
+          },
+          {
+            path: 'scrumboard',
+            loadChildren: () => import('./pages/apps/scrumboard/scrumboard.module').then(m => m.ScrumboardModule),
+          }
         ]
       },
       {
