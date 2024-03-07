@@ -45,7 +45,6 @@ export class UserTableComponent implements OnInit, AfterViewInit {
     { label: 'First Name', property: 'firstName', type: 'text', visible: true, cssClasses: ['font-medium'] },
     { label: 'Last Name', property: 'lastName', type: 'text', visible: true, cssClasses: ['font-medium'] },
     { label: 'Email', property: 'email', type: 'text', visible: true, cssClasses: ['font-medium'] },
-    { label: 'Password', property: 'password', type: 'text', visible: true, cssClasses: ['font-medium'] },
     { label: 'Actions', property: 'actions', type: 'button', visible: true }
   ];
   pageSize = 10;

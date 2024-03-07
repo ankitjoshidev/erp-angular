@@ -19,16 +19,17 @@ export interface PopoverParams<T> {
   providedIn: 'root'
 })
 export class PopoverService {
+  popoverRef: any;
   constructor(private overlay: Overlay, private injector: Injector) { }
 
   open<T>({ origin, content, data, width, height, position, offsetX, offsetY }: PopoverParams<T>): PopoverRef<T> {
     const overlayRef = this.overlay.create(this.getOverlayConfig({ origin, width, height, position, offsetX, offsetY }));
-    const popoverRef = new PopoverRef<T>(overlayRef, content, data);
+    this.popoverRef = new PopoverRef<T>(overlayRef, content, data);
 
-    const injector = this.createInjector(popoverRef, this.injector);
+    const injector = this.createInjector(this.popoverRef, this.injector);
     overlayRef.attach(new ComponentPortal(PopoverComponent, null, injector));
 
-    return popoverRef;
+    return this.popoverRef;
   }
 
   private static getPositions(): ConnectionPositionPair[] {
@@ -80,6 +81,10 @@ export class PopoverService {
       .withDefaultOffsetX(offsetX || 0)
       .withTransformOriginOn('.vex-popover')
       .withPush(true);
+  }
+
+  close(){
+    this.popoverRef.close()
   }
 
 }

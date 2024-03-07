@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CustomLayoutComponent } from './custom-layout/custom-layout.component';
 import { VexRoutes } from '../@vex/interfaces/vex-route.interface';
 import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
+import { AuthGuardPrivateUser } from './guards/privateUser';
 
 const routes: VexRoutes = [
   {
@@ -28,13 +29,16 @@ const routes: VexRoutes = [
       },
       {
         path: '',
+        canActivate: [AuthGuardPrivateUser],
         loadChildren: () => import('./pages/dashboards/dashboard-analytics/dashboard-analytics.module').then(m => m.DashboardAnalyticsModule),
       },
       {
         path: 'apps',
+        canActivate: [AuthGuardPrivateUser],
         children: [
           {
             path: 'chat',
+            canActivate: [AuthGuardPrivateUser],
             loadChildren: () => import('./pages/apps/chat/chat.module').then(m => m.ChatModule),
             data: {
               toolbarShadowEnabled: true
@@ -42,22 +46,27 @@ const routes: VexRoutes = [
           },
           {
             path: 'social',
+            canActivate: [AuthGuardPrivateUser],
             loadChildren: () => import('./pages/apps/social/social.module').then(m => m.SocialModule)
           },
           {
             path: 'contacts',
+            canActivate: [AuthGuardPrivateUser],
             loadChildren: () => import('./pages/apps/contacts/contacts.module').then(m => m.ContactsModule)
           },
           {
             path: 'users',
+            canActivate: [AuthGuardPrivateUser],
             loadChildren: () => import('./pages/apps/user-table/user-table.module').then(m => m.UserTableModule),
           },
           {
             path: 'editor',
+            canActivate: [AuthGuardPrivateUser],
             loadChildren: () => import('./pages/apps/editor/editor.module').then(m => m.EditorModule),
           },
           {
             path: 'mail',
+            canActivate: [AuthGuardPrivateUser],
             loadChildren: () => import('./pages/apps/mail/mail.module').then(m => m.MailModule),
             data: {
               toolbarShadowEnabled: true,
@@ -66,10 +75,12 @@ const routes: VexRoutes = [
           },
           {
             path: 'social',
+            canActivate: [AuthGuardPrivateUser],
             loadChildren: () => import('./pages/apps/social/social.module').then(m => m.SocialModule)
           },
           {
             path: 'calendar',
+            canActivate: [AuthGuardPrivateUser],
             loadChildren: () => import('./pages/apps/calendar/calendar.module').then(m => m.CalendarModule),
             data: {
               toolbarShadowEnabled: true
@@ -77,6 +88,7 @@ const routes: VexRoutes = [
           },
           {
             path: 'scrumboard',
+            canActivate: [AuthGuardPrivateUser],
             loadChildren: () => import('./pages/apps/scrumboard/scrumboard.module').then(m => m.ScrumboardModule),
           }
         ]

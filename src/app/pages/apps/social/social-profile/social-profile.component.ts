@@ -5,6 +5,7 @@ import { fadeInUp400ms } from '../../../../../@vex/animations/fade-in-up.animati
 import { fadeInRight400ms } from '../../../../../@vex/animations/fade-in-right.animation';
 import { scaleIn400ms } from '../../../../../@vex/animations/scale-in.animation';
 import { stagger40ms } from '../../../../../@vex/animations/stagger.animation';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'vex-social-profile',
@@ -21,9 +22,12 @@ export class SocialProfileComponent implements OnInit {
 
   suggestions = friendSuggestions;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.getUserDetail();
   }
 
   addFriend(friend: FriendSuggestion) {
@@ -36,5 +40,9 @@ export class SocialProfileComponent implements OnInit {
 
   trackByName(index: number, friend: FriendSuggestion) {
     return friend.name;
+  }
+
+  getUserDetail(){
+    const decodedToken: any = this.authService.decodeToken();
   }
 }

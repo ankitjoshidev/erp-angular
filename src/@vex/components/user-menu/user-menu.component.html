@@ -1,6 +1,5 @@
 <div class="vex-user-menu">
-  <a (click)="close()"
-     [routerLink]="['/apps/social']"
+  <a (click)="goToProfile()"
      class="vex-user-menu-item"
      matRipple
      matRippleColor="rgb(var(--color-primary), 0.1)">
@@ -9,7 +8,6 @@
   </a>
 
   <a (click)="close()"
-     [routerLink]="['/login']"
      class="vex-user-menu-item"
      matRipple
      matRippleColor="rgb(var(--color-primary), 0.1)">

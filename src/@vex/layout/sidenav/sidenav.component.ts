@@ -8,6 +8,7 @@ import { PopoverService } from '../../components/popover/popover.service';
 import { Observable, of } from 'rxjs';
 import { UserMenuComponent } from '../../components/user-menu/user-menu.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'vex-sidenav',
@@ -27,14 +28,18 @@ export class SidenavComponent implements OnInit {
   userMenuOpen$: Observable<boolean> = of(false);
 
   items = this.navigationService.items;
+  name: string;
+  email: string;
 
   constructor(private navigationService: NavigationService,
               private layoutService: LayoutService,
               private configService: ConfigService,
               private readonly popoverService: PopoverService,
+              private authService: AuthService,
               private readonly dialog: MatDialog) { }
 
   ngOnInit() {
+    this.getUserDetail();
   }
 
   collapseOpenSidenav() {
@@ -74,5 +79,9 @@ export class SidenavComponent implements OnInit {
       startWith(true),
     );
   }
-
+  getUserDetail(){
+    const decodedToken: any = this.authService.decodeToken();
+    this.name = decodedToken.firstName+' '+decodedToken.lastName;
+    this.email = decodedToken.email;
+  }
 }

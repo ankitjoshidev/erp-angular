@@ -3,6 +3,8 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { fadeInUp400ms } from '../../../../../@vex/animations/fade-in-up.animation';
+import { CommonApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'vex-login',
@@ -16,14 +18,16 @@ import { fadeInUp400ms } from '../../../../../@vex/animations/fade-in-up.animati
 export class LoginComponent implements OnInit {
 
   form: UntypedFormGroup;
-
+  apiPath: string = 'signin';
   inputType = 'password';
   visible = false;
 
   constructor(private router: Router,
               private fb: UntypedFormBuilder,
               private cd: ChangeDetectorRef,
-              private snackbar: MatSnackBar
+              private snackbar: MatSnackBar,
+              private apiService: CommonApiService,
+              private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -34,10 +38,18 @@ export class LoginComponent implements OnInit {
   }
 
   send() {
-    this.router.navigate(['/']);
-    this.snackbar.open('Lucky you! Looks like you didn\'t need a password or email address! For a real application we provide validators to prevent this. ;)', 'LOL THANKS', {
-      duration: 10000
-    });
+    this.apiService.add(this.form.value, this.apiPath).subscribe(
+      (response) => {
+        this.form.reset();
+        this.authService.setToken(response.token);
+        this.router.navigate(['']);
+      },
+      (error) => {
+        this.snackbar.open(error, 'Close', {
+          duration: 1000
+        });
+      }
+    );
   }
 
   toggleVisibility() {

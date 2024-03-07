@@ -42,14 +42,12 @@ export class UserCreateUpdateComponent implements OnInit {
     this.form = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      password: ['', Validators.required],
       email: ['', Validators.required],
-      registered: [false, Validators.required],
+      registered: [true, Validators.required],
       active: ["true"]
     });
     if(data){
       this.form.patchValue({
-        password: data.password,
         email: data.email,
         registered: data.registered,
         active: data.active ? "true": "false",

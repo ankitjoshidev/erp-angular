@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PopoverRef } from '../popover/popover-ref';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { PopoverService } from '../popover/popover.service';
 
 @Component({
   selector: 'vex-user-menu',
@@ -8,13 +10,22 @@ import { PopoverRef } from '../popover/popover-ref';
 })
 export class UserMenuComponent implements OnInit {
 
-  constructor(private readonly popoverRef: PopoverRef) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private popoverService: PopoverService
+    ) { }
 
   ngOnInit(): void {
   }
 
+  goToProfile(): void {
+    this.popoverService.close();
+    this.router.navigate(['apps/social']);
+  }
   close(): void {
-    /** Wait for animation to complete and then close */
-    setTimeout(() => this.popoverRef.close(), 250);
+    this.authService.removeToken();
+    this.popoverService.close();
+    this.router.navigate(['login']);
   }
 }
