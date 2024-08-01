@@ -5,7 +5,7 @@ export class User {
   email: string;
   password: string;
   registered: boolean;
-  active: boolean;
+  active: string;
 
   constructor(user: any) {
     this.id = user.id;

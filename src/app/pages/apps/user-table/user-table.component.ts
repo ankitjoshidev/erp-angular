@@ -14,6 +14,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Router } from '@angular/router';
 import { CommonApiService } from 'src/app/services/api.service';
 import { UserSubject } from 'src/app/subjects/userDetail';
+import { UsersData } from 'src/static-data/users';
 
 @UntilDestroy()
 @Component({
@@ -63,19 +64,10 @@ export class UserTableComponent implements OnInit, AfterViewInit {
     return this.columns.filter(column => column.visible).map(column => column.property);
   }
   getData() {
-    this.apiService.get(this.apiPath).subscribe(
-      (response) => {
-        this.users = response.users.map((user: Object)=>new User(user));
-        this.dataSource = new MatTableDataSource();
-        this.dataSource.data = this.users; 
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-        console.log('API response:', response);
-      },
-      (error) => {
-        console.error('API error:', error);
-      }
-    );
+    this.dataSource = new MatTableDataSource();
+    this.dataSource.data = UsersData; 
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   ngOnInit() {
@@ -99,15 +91,9 @@ export class UserTableComponent implements OnInit, AfterViewInit {
   }
 
   deleteUser(user: User) {
-    this.apiService.delete(user.id, this.apiPath).subscribe(
-      (response) => {
-        this.getData();
-        console.log('API response:', response);
-      },
-      (error) => {
-        console.error('API error:', error);
-      }
-    );
+    const indexToRemove: number = UsersData.findIndex(x=>x.id !== user.id);
+    UsersData.splice(indexToRemove, 1);;
+    this.getData();
   }
 
   onFilterChange(value: string) {

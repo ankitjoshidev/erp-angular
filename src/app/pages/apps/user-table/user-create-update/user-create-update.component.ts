@@ -6,6 +6,7 @@ import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
 import { stagger60ms } from 'src/@vex/animations/stagger.animation';
 import { CommonApiService } from 'src/app/services/api.service';
 import { UserSubject } from 'src/app/subjects/userDetail';
+import { UsersData } from 'src/static-data/users';
 
 @Component({
   selector: 'vex-user-create-update',
@@ -48,11 +49,11 @@ export class UserCreateUpdateComponent implements OnInit {
     });
     if(data){
       this.form.patchValue({
+        firstName: data.firstName,
+        lastName: data.lastName,
         email: data.email,
         registered: data.registered,
-        active: data.active ? "true": "false",
-        firstName: data.firstName,
-        lastName: data.lastName
+        active: data.active == "true" ? "true": "false"
       });
       this.recordId = data.id;
       this.edit = true;
@@ -69,27 +70,19 @@ export class UserCreateUpdateComponent implements OnInit {
       return false;
     }
     if(this.add){
-      this.apiService.add(this.form.value, this.apiPath).subscribe(
-        (response) => {
-          this.form.reset();
-          this.router.navigate(['/apps/users']); 
-          console.log('API response:', response);
-        },
-        (error) => {
-          console.error('API error:', error);
-        }
-      );
+      this.form.value['id'] = UsersData.length+1;
+      UsersData.push(this.form.value);
+      this.form.reset();
+      this.router.navigate(['/apps/users']); 
     } else if (this.edit){
-      this.apiService.update(this.recordId, this.form.value, this.apiPath).subscribe(
-        (response) => {
-          this.form.reset();
-          this.router.navigate(['/apps/users']); 
-          console.log('API response:', response);
-        },
-        (error) => {
-          console.error('API error:', error);
-        }
-      );
+      debugger
+      UsersData.find(x=>x.id == this.recordId).firstName = this.form.value.firstName;
+      UsersData.find(x=>x.id == this.recordId).lastName = this.form.value.lastName;
+      UsersData.find(x=>x.id == this.recordId).email = this.form.value.email;
+      UsersData.find(x=>x.id == this.recordId).registered = this.form.value.registered;
+      UsersData.find(x=>x.id == this.recordId).active = this.form.value.active;
+      this.form.reset();
+      this.router.navigate(['/apps/users']); 
     }
   }
 

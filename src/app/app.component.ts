@@ -122,34 +122,34 @@ export class AppComponent {
             route: '/apps/users',
             icon: 'mat:assignment'
           },
-          {
-            type: 'link',
-            label: 'Chat',
-            route: '/apps/chat',
-            icon: 'mat:chat',
-            badge: {
-              value: '16',
-              bgClass: 'bg-cyan',
-              textClass: 'text-cyan-contrast',
-            },
-          },
+          // {
+          //   type: 'link',
+          //   label: 'Chat',
+          //   route: '/apps/chat',
+          //   icon: 'mat:chat',
+          //   badge: {
+          //     value: '16',
+          //     bgClass: 'bg-cyan',
+          //     textClass: 'text-cyan-contrast',
+          //   },
+          // },
           {
             type: 'link',
             label: 'Contacts',
             route: '/apps/contacts',
             icon: 'mat:contacts'
           },
-          {
-            type: 'link',
-            label: 'Scrumboard',
-            route: '/apps/scrumboard',
-            icon: 'mat:assessment',
-            badge: {
-              value: 'NEW',
-              bgClass: 'bg-primary',
-              textClass: 'text-primary-contrast',
-            }
-          },
+          // {
+          //   type: 'link',
+          //   label: 'Scrumboard',
+          //   route: '/apps/scrumboard',
+          //   icon: 'mat:assessment',
+          //   badge: {
+          //     value: 'NEW',
+          //     bgClass: 'bg-primary',
+          //     textClass: 'text-primary-contrast',
+          //   }
+          // },
           {
             type: 'dropdown',
             label: 'Social',
@@ -168,12 +168,12 @@ export class AppComponent {
               },
             ]
           },
-          {
-            type: 'link',
-            label: 'Mailbox',
-            route: '/apps/mail',
-            icon: 'mat:mail',
-          }
+          // {
+          //   type: 'link',
+          //   label: 'Mailbox',
+          //   route: '/apps/mail',
+          //   icon: 'mat:mail',
+          // }
         ]
       }
     ];
