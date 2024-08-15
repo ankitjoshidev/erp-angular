@@ -41,11 +41,11 @@ const routes: VexRoutes = [
             canActivate: [AuthGuardPrivateUser],
             loadChildren: () => import('./pages/apps/social/social.module').then(m => m.SocialModule)
           },
-          {
-            path: 'contacts',
-            canActivate: [AuthGuardPrivateUser],
-            loadChildren: () => import('./pages/apps/contacts/contacts.module').then(m => m.ContactsModule)
-          },
+          // {
+          //   path: 'contacts',
+          //   canActivate: [AuthGuardPrivateUser],
+          //   loadChildren: () => import('./pages/apps/contacts/contacts.module').then(m => m.ContactsModule)
+          // },
           {
             path: 'users',
             canActivate: [AuthGuardPrivateUser],
@@ -55,6 +55,17 @@ const routes: VexRoutes = [
             path: 'social',
             canActivate: [AuthGuardPrivateUser],
             loadChildren: () => import('./pages/apps/social/social.module').then(m => m.SocialModule)
+          },
+          {
+            path: 'chat',
+            loadChildren: () => import('./pages/apps/chat/chat.module').then(m => m.ChatModule),
+            data: {
+              toolbarShadowEnabled: true
+            }
+          },
+          {
+            path: 'editor',
+            loadChildren: () => import('./pages/apps/editor/editor.module').then(m => m.EditorModule),
           }
         ]
       },

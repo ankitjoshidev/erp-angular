@@ -122,23 +122,29 @@ export class AppComponent {
             route: '/apps/users',
             icon: 'mat:assignment'
           },
-          // {
-          //   type: 'link',
-          //   label: 'Chat',
-          //   route: '/apps/chat',
-          //   icon: 'mat:chat',
-          //   badge: {
-          //     value: '16',
-          //     bgClass: 'bg-cyan',
-          //     textClass: 'text-cyan-contrast',
-          //   },
-          // },
           {
             type: 'link',
-            label: 'Contacts',
-            route: '/apps/contacts',
-            icon: 'mat:contacts'
+            label: 'Chat',
+            route: '/apps/chat',
+            icon: 'mat:chat',
+            badge: {
+              value: '16',
+              bgClass: 'bg-cyan',
+              textClass: 'text-cyan-contrast',
+            },
           },
+          {
+            type: 'link',
+            label: 'WYSIWYG Editor',
+            route: '/apps/editor',
+            icon: 'mat:chrome_reader_mode'
+          },
+          // {
+          //   type: 'link',
+          //   label: 'Contacts',
+          //   route: '/apps/contacts',
+          //   icon: 'mat:contacts'
+          // },
           // {
           //   type: 'link',
           //   label: 'Scrumboard',

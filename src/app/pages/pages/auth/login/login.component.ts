@@ -38,18 +38,22 @@ export class LoginComponent implements OnInit {
   }
 
   send() {
-    this.apiService.add(this.form.value, this.apiPath).subscribe(
-      (response) => {
-        this.form.reset();
-        this.authService.setToken(response.token);
+    if(this.form.value.email == 'admin@gmail.com' && this.form.value.password == '321321'){
+        this.authService.setToken('abc');
         this.router.navigate(['']);
-      },
-      (error) => {
-        this.snackbar.open(error, 'Close', {
-          duration: 1000
-        });
-      }
-    );
+    }
+    // this.apiService.add(this.form.value, this.apiPath).subscribe(
+    //   (response) => {
+    //     this.form.reset();
+    //     this.authService.setToken(response.token);
+    //     this.router.navigate(['']);
+    //   },
+    //   (error) => {
+    //     this.snackbar.open(error, 'Close', {
+    //       duration: 1000
+    //     });
+    //   }
+    // );
   }
 
   toggleVisibility() {
