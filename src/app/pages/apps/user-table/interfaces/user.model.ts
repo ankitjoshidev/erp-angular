@@ -11,6 +11,8 @@ export class User {
   relevingDate: string;
   dob: string;
   aadharNo: string;
+  gender: string;
+  department: number;
 
   constructor(user: any) {
     this.id = user.id;
@@ -25,5 +27,7 @@ export class User {
     this.relevingDate = user.relevingDate;
     this.dob = user.dob;
     this.aadharNo = user.aadharNo;
+    this.gender = user.gender;
+    this.department = user.department;
   }
 }

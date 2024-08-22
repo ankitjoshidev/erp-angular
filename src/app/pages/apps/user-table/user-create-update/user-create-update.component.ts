@@ -7,6 +7,7 @@ import { stagger60ms } from 'src/@vex/animations/stagger.animation';
 import { CommonApiService } from 'src/app/services/api.service';
 import { UserSubject } from 'src/app/subjects/userDetail';
 import { UsersData } from 'src/static-data/users';
+import { DepartmentsData } from 'src/static-data/department';
 
 @Component({
   selector: 'vex-user-create-update',
@@ -24,6 +25,7 @@ export class UserCreateUpdateComponent implements OnInit {
   recordId: number;
   add: boolean=false;
   edit: boolean=false;
+  departmentsData: any = DepartmentsData;
   constructor(private fb: UntypedFormBuilder, private router: Router, private apiService: CommonApiService,
     private userSubject: UserSubject) {
       this.userSubject.getUserDetails().subscribe((user) => {
@@ -50,7 +52,9 @@ export class UserCreateUpdateComponent implements OnInit {
       joiningDate: [null],
       relevingDate: [null],
       dob: [null],
-      aadharNo: ['', Validators.required]
+      aadharNo: ['', Validators.required],
+      gender: ['', Validators.required],
+      department: [null, Validators.required]
     });
     if(data){
       this.form.patchValue({
@@ -63,7 +67,9 @@ export class UserCreateUpdateComponent implements OnInit {
         joiningDate: data.joiningDate,
         relevingDate: data.relevingDate,
         dob: data.dob,
-        aadharNo: data.aadharNo
+        aadharNo: data.aadharNo,
+        gender: data.gender,
+        department: JSON.stringify(data.department)
       });
       this.recordId = data.id;
       this.edit = true;
@@ -96,6 +102,8 @@ export class UserCreateUpdateComponent implements OnInit {
       UsersData.find(x=>x.id == this.recordId).relevingDate = this.form.value.relevingDate;
       UsersData.find(x=>x.id == this.recordId).dob = this.form.value.dob;
       UsersData.find(x=>x.id == this.recordId).aadharNo = this.form.value.aadharNo;
+      UsersData.find(x=>x.id == this.recordId).gender = this.form.value.gender;
+      UsersData.find(x=>x.id == this.recordId).department = +this.form.value.department;
       this.form.reset();
       this.router.navigate(['/apps/users']); 
     }

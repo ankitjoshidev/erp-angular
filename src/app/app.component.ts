@@ -124,6 +124,12 @@ export class AppComponent {
           },
           {
             type: 'link',
+            label: 'Department',
+            route: '/apps/department',
+            icon: 'mat:assignment'
+          },
+          {
+            type: 'link',
             label: 'Chat',
             route: '/apps/chat',
             icon: 'mat:chat',

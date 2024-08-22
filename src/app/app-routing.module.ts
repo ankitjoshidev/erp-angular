@@ -52,6 +52,11 @@ const routes: VexRoutes = [
             loadChildren: () => import('./pages/apps/user-table/user-table.module').then(m => m.UserTableModule),
           },
           {
+            path: 'department',
+            canActivate: [AuthGuardPrivateUser],
+            loadChildren: () => import('./pages/apps/department-table/department-table.module').then(m => m.UserTableModule),
+          },
+          {
             path: 'social',
             canActivate: [AuthGuardPrivateUser],
             loadChildren: () => import('./pages/apps/social/social.module').then(m => m.SocialModule)

@@ -64,6 +64,24 @@
         </mat-form-field>
       </div>
 
+      <div class="flex flex-col sm:flex-row sm:gap-4">
+        <mat-form-field class="flex-auto">
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="gender">
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="flex-auto">
+          <mat-label>Department</mat-label>
+          <mat-select formControlName="department">
+            <ng-container *ngFor="let element of departmentsData">
+              <mat-option value="{{element.id}}">{{element.name}}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
       <div class="flex items-center justify-end gap-2">
         <button (click)="cancel()" mat-button type="button">Cancel</button>
         <button type="submit" (click)="onSubmit()" color="primary" mat-raised-button>Submit</button>
