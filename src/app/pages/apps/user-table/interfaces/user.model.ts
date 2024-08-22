@@ -4,8 +4,13 @@ export class User {
   lastName: string;
   email: string;
   password: string;
-  registered: boolean;
   active: string;
+  phone: string;
+  address: string;
+  joiningDate: string;
+  relevingDate: string;
+  dob: string;
+  aadharNo: string;
 
   constructor(user: any) {
     this.id = user.id;
@@ -13,7 +18,12 @@ export class User {
     this.lastName = user.lastName;
     this.email = user.email;
     this.password = user.password;
-    this.registered = user.registered;
     this.active = user.active;
+    this.phone = user.phone;
+    this.address = user.address;
+    this.joiningDate = user.joiningDate;
+    this.relevingDate = user.relevingDate;
+    this.dob = user.dob;
+    this.aadharNo = user.aadharNo;
   }
 }

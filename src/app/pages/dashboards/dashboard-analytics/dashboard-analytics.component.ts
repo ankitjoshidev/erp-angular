@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { defaultChartOptions } from '../../../../@vex/utils/default-chart-options';
 import { Order, tableSalesData } from '../../../../static-data/table-sales-data';
 import { TableColumn } from '../../../../@vex/interfaces/table-column.interface';
+import { UsersData } from 'src/static-data/users';
 
 @Component({
   selector: 'vex-dashboard-analytics',
@@ -9,7 +10,52 @@ import { TableColumn } from '../../../../@vex/interfaces/table-column.interface'
   styleUrls: ['./dashboard-analytics.component.scss']
 })
 export class DashboardAnalyticsComponent {
+ totalUsers: Number = UsersData.length;
+ totalActiveUsers: Number = UsersData.filter(x=>x.active == 'true').length;
+ today = new Date();
+ todayYear = this.today.getFullYear();
+ next30Days = new Date(this.today.setDate(this.today.getDate() + 30)).getTime();
+ upcomingBirthdays: number;
+ upcomingAniversaries: number;
+ upcomingReleving: number;
 
+constructor() {
+  this.upcomingBirthdays = UsersData.filter(user => {
+    if(user.dob && user.active == 'true'){
+
+      const userDob = new Date(user.dob);
+
+      const userBirthdayThisYear = new Date(userDob.setFullYear(this.todayYear)).getTime();
+    
+      return userBirthdayThisYear < this.next30Days && userBirthdayThisYear > new Date().getTime();
+    } else {
+      return false;
+    }
+  }).length;
+  this.upcomingAniversaries = UsersData.filter(user => {
+    if(user.joiningDate && user.active == 'true'){
+      debugger
+      const userDob = new Date(user.joiningDate);
+
+      const userJoiningThisYear = new Date(userDob.setFullYear(this.todayYear)).getTime();
+    
+      return userJoiningThisYear < this.next30Days && userJoiningThisYear  > new Date().getTime();
+    } else {
+      return false;
+    }
+  }).length;
+  this.upcomingReleving = UsersData.filter(user => {
+    if(user.relevingDate){
+
+      const userRelevingThisYear = new Date(user.relevingDate).getTime();
+    
+      return userRelevingThisYear > new Date().getTime();
+    } else {
+      return false;
+    }
+  }).length;
+}
+ 
   tableColumns: TableColumn<Order>[] = [
     {
       label: '',

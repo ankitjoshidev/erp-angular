@@ -30,8 +30,38 @@
           </mat-select>
         </mat-form-field>
       </div>
+
       <div class="flex flex-col sm:flex-row sm:gap-4">
-        <mat-slide-toggle class="flex-auto" color="primary" formControlName="registered" [checked]="false">Registered</mat-slide-toggle>
+        <mat-form-field class="flex-auto">
+          <mat-label>Phone</mat-label>
+          <input type="number" formControlName="phone" matInput required>
+        </mat-form-field>
+        <mat-form-field class="flex-auto">
+          <mat-label>Addresss</mat-label>
+          <input formControlName="address" matInput required>
+        </mat-form-field>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:gap-4">
+        <mat-form-field class="flex-auto">
+          <mat-label>Joining Date</mat-label>
+          <input type="date" formControlName="joiningDate" matInput required>
+        </mat-form-field>
+        <mat-form-field class="flex-auto">
+          <mat-label>Releving Date</mat-label>
+          <input type="date" formControlName="relevingDate" matInput>
+        </mat-form-field>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:gap-4">
+        <mat-form-field class="flex-auto">
+          <mat-label>DOB</mat-label>
+          <input type="date" formControlName="dob" matInput required>
+        </mat-form-field>
+        <mat-form-field class="flex-auto">
+          <mat-label>Aadhar Number</mat-label>
+          <input formControlName="aadharNo" matInput required>
+        </mat-form-field>
       </div>
 
       <div class="flex items-center justify-end gap-2">

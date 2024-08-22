@@ -43,17 +43,27 @@ export class UserCreateUpdateComponent implements OnInit {
     this.form = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
+      active: ["true"],
       email: ['', Validators.required],
-      registered: [true, Validators.required],
-      active: ["true"]
+      phone: ['', Validators.required],
+      address: ['', Validators.required],
+      joiningDate: [null],
+      relevingDate: [null],
+      dob: [null],
+      aadharNo: ['', Validators.required]
     });
     if(data){
       this.form.patchValue({
         firstName: data.firstName,
         lastName: data.lastName,
         email: data.email,
-        registered: data.registered,
-        active: data.active == "true" ? "true": "false"
+        active: data.active == "true" ? "true": "false",
+        phone: data.phone,
+        address: data.address,
+        joiningDate: data.joiningDate,
+        relevingDate: data.relevingDate,
+        dob: data.dob,
+        aadharNo: data.aadharNo
       });
       this.recordId = data.id;
       this.edit = true;
@@ -66,6 +76,7 @@ export class UserCreateUpdateComponent implements OnInit {
   }
 
   onSubmit() {
+    debugger
     if(this.form.invalid){
       return false;
     }
@@ -75,12 +86,16 @@ export class UserCreateUpdateComponent implements OnInit {
       this.form.reset();
       this.router.navigate(['/apps/users']); 
     } else if (this.edit){
-      debugger
       UsersData.find(x=>x.id == this.recordId).firstName = this.form.value.firstName;
       UsersData.find(x=>x.id == this.recordId).lastName = this.form.value.lastName;
       UsersData.find(x=>x.id == this.recordId).email = this.form.value.email;
-      UsersData.find(x=>x.id == this.recordId).registered = this.form.value.registered;
       UsersData.find(x=>x.id == this.recordId).active = this.form.value.active;
+      UsersData.find(x=>x.id == this.recordId).phone = this.form.value.phone;
+      UsersData.find(x=>x.id == this.recordId).address = this.form.value.address;
+      UsersData.find(x=>x.id == this.recordId).joiningDate = this.form.value.joiningDate;
+      UsersData.find(x=>x.id == this.recordId).relevingDate = this.form.value.relevingDate;
+      UsersData.find(x=>x.id == this.recordId).dob = this.form.value.dob;
+      UsersData.find(x=>x.id == this.recordId).aadharNo = this.form.value.aadharNo;
       this.form.reset();
       this.router.navigate(['/apps/users']); 
     }
