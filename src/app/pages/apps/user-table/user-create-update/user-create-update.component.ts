@@ -26,6 +26,7 @@ export class UserCreateUpdateComponent implements OnInit {
   add: boolean=false;
   edit: boolean=false;
   departmentsData: any = DepartmentsData;
+  usersData: any = UsersData;
   constructor(private fb: UntypedFormBuilder, private router: Router, private apiService: CommonApiService,
     private userSubject: UserSubject) {
       this.userSubject.getUserDetails().subscribe((user) => {
@@ -54,7 +55,8 @@ export class UserCreateUpdateComponent implements OnInit {
       dob: [null],
       aadharNo: ['', Validators.required],
       gender: ['', Validators.required],
-      department: [null, Validators.required]
+      department: [null, Validators.required],
+      reportTo: [null]
     });
     if(data){
       this.form.patchValue({
@@ -69,7 +71,8 @@ export class UserCreateUpdateComponent implements OnInit {
         dob: data.dob,
         aadharNo: data.aadharNo,
         gender: data.gender,
-        department: JSON.stringify(data.department)
+        department: JSON.stringify(data.department),
+        reportTo: JSON.stringify(data.reportTo)
       });
       this.recordId = data.id;
       this.edit = true;
@@ -104,6 +107,7 @@ export class UserCreateUpdateComponent implements OnInit {
       UsersData.find(x=>x.id == this.recordId).aadharNo = this.form.value.aadharNo;
       UsersData.find(x=>x.id == this.recordId).gender = this.form.value.gender;
       UsersData.find(x=>x.id == this.recordId).department = +this.form.value.department;
+      UsersData.find(x=>x.id == this.recordId).reportTo = +this.form.value.reportTo;
       this.form.reset();
       this.router.navigate(['/apps/users']); 
     }

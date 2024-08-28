@@ -81,6 +81,16 @@
           </mat-select>
         </mat-form-field>
       </div>
+      <div class="flex flex-col sm:flex-row sm:gap-4">
+        <mat-form-field class="flex-auto">
+          <mat-label>Report To</mat-label>
+          <mat-select formControlName="reportTo">
+            <ng-container *ngFor="let element of usersData">
+              <mat-option value="{{element.id}}">{{element.firstName}} {{element.lastName}}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
 
       <div class="flex items-center justify-end gap-2">
         <button (click)="cancel()" mat-button type="button">Cancel</button>

@@ -13,6 +13,7 @@ export class User {
   aadharNo: string;
   gender: string;
   department: number;
+  reportTo: number;
 
   constructor(user: any) {
     this.id = user.id;
@@ -29,5 +30,6 @@ export class User {
     this.aadharNo = user.aadharNo;
     this.gender = user.gender;
     this.department = user.department;
+    this.reportTo = user.reportTo;
   }
 }

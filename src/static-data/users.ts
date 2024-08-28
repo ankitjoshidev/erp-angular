@@ -15,7 +15,8 @@ export const UsersData: User[] = [
     dob: "1999-01-09",
     aadharNo: "474815916664",
     gender: "male",
-    department: 1
+    department: 1,
+    reportTo: null
   },
   {
     "id": 2,
@@ -31,7 +32,8 @@ export const UsersData: User[] = [
     dob: "1995-05-14",
     aadharNo: "123456789012",
     gender: "male",
-    department: 1
+    department: 1,
+    reportTo: 1
   },
   {
     "id": 3,
@@ -47,7 +49,8 @@ export const UsersData: User[] = [
     dob: "1998-11-23",
     aadharNo: "987654321098",
     gender: "male",
-    department: 1
+    department: 1,
+    reportTo: 1
   },
   {
     "id": 4,
@@ -63,7 +66,8 @@ export const UsersData: User[] = [
     dob: "2000-03-18",
     aadharNo: "567890123456",
     gender: "male",
-    department: 1
+    department: 1,
+    reportTo: 1
   },
   {
     "id": 5,
@@ -79,7 +83,8 @@ export const UsersData: User[] = [
     dob: "1997-07-09",
     aadharNo: "345678901234",
     gender: "male",
-    department: 2
+    department: 2,
+    reportTo: 1
   },
   {
     "id": 6,
@@ -95,7 +100,8 @@ export const UsersData: User[] = [
     dob: "2001-09-30",
     aadharNo: "876543210987",
     gender: "male",
-    department: 2
+    department: 2,
+    reportTo: 1
   },
   {
     "id": 7,
@@ -111,7 +117,8 @@ export const UsersData: User[] = [
     dob: "1996-08-21",
     aadharNo: "234567890123",
     gender: "male",
-    department: 3
+    department: 3,
+    reportTo: 1
   },
   {
     "id": 8,
@@ -127,7 +134,8 @@ export const UsersData: User[] = [
     dob: "1993-12-17",
     aadharNo: "987012345678",
     gender: "male",
-    department: 4
+    department: 4,
+    reportTo: 1
   },
   {
     "id": 9,
@@ -143,7 +151,8 @@ export const UsersData: User[] = [
     dob: "1995-01-10",
     aadharNo: "123098456789",
     gender: "male",
-    department: 4
+    department: 4,
+    reportTo: 1
   },
   {
     "id": 10,
@@ -159,7 +168,8 @@ export const UsersData: User[] = [
     dob: "1994-02-15",
     aadharNo: "789654123098",
     gender: "male",
-    department: 2
+    department: 2,
+    reportTo: 1
   },
   {
     "id": 11,
@@ -175,7 +185,8 @@ export const UsersData: User[] = [
     dob: "2002-06-05",
     aadharNo: "234098765432",
     gender: "male",
-    department: 6
+    department: 6,
+    reportTo: 1
   },
   {
     "id": 12,
@@ -191,7 +202,8 @@ export const UsersData: User[] = [
     dob: "1991-09-02",
     aadharNo: "890123456789",
     gender: "male",
-    department: 2
+    department: 2,
+    reportTo: 1
   },
   {
     "id": 13,
@@ -207,7 +219,8 @@ export const UsersData: User[] = [
     dob: "1997-10-12",
     aadharNo: "567890124567",
     gender: "male",
-    department: 2
+    department: 2,
+    reportTo: 1
   },
   {
     "id": 14,
@@ -223,7 +236,8 @@ export const UsersData: User[] = [
     dob: "1992-12-09",
     aadharNo: "123456789065",
     gender: "male",
-    department: 4
+    department: 4,
+    reportTo: 1
   },
   {
     "id": 15,
@@ -239,6 +253,7 @@ export const UsersData: User[] = [
     dob: "1999-05-20",
     aadharNo: "345678909876",
     gender: "male",
-    department: 3
+    department: 3,
+    reportTo: 1
   }
 ];
