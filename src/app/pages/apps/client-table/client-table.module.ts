@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AioTableRoutingModule } from './department-table-routing.module';
-import { DepartmentTableComponent } from './department-table.component';
+import { AioTableRoutingModule } from './client-table-routing.module';
+import { ClientTableComponent } from './client-table.component';
 import { PageLayoutModule } from '../../../../@vex/components/page-layout/page-layout.module';
 import { BreadcrumbsModule } from '../../../../@vex/components/breadcrumbs/breadcrumbs.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -16,12 +16,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { UserCreateUpdateModule } from './department-create-update/department-create-update.module';
+import { ClientCreateUpdateModule } from './client-create-update/client-create-update.module';
 import { CommonApiService } from 'src/app/services/api.service';
 
 
 @NgModule({
-  declarations: [DepartmentTableComponent],
+  declarations: [ClientTableComponent],
   imports: [
     CommonModule,
     AioTableRoutingModule,
@@ -34,7 +34,7 @@ import { CommonApiService } from 'src/app/services/api.service';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
-    UserCreateUpdateModule,
+    ClientCreateUpdateModule,
     FormsModule,
     MatTooltipModule,
     ReactiveFormsModule,
@@ -43,5 +43,5 @@ import { CommonApiService } from 'src/app/services/api.service';
   ],
   providers:[CommonApiService]
 })
-export class DepartmentTableModule {
+export class ClientTableModule {
 }

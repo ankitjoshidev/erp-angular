@@ -3,6 +3,8 @@ import { defaultChartOptions } from '../../../../@vex/utils/default-chart-option
 import { Order, tableSalesData } from '../../../../static-data/table-sales-data';
 import { TableColumn } from '../../../../@vex/interfaces/table-column.interface';
 import { UsersData } from 'src/static-data/users';
+import { DepartmentsData } from 'src/static-data/department';
+import { ClientsData } from 'src/static-data/client';
 
 @Component({
   selector: 'vex-dashboard-analytics',
@@ -11,13 +13,18 @@ import { UsersData } from 'src/static-data/users';
 })
 export class DashboardAnalyticsComponent {
  totalUsers: Number = UsersData.length;
+ totalDepartments: Number = DepartmentsData.length;
+ totalClients: Number = ClientsData.length;
  totalActiveUsers: Number = UsersData.filter(x=>x.active == 'true').length;
+ totalActiveClients: Number = ClientsData.filter(x=>x.active == 'true').length;
  today = new Date();
  todayYear = this.today.getFullYear();
  next30Days = new Date(this.today.setDate(this.today.getDate() + 30)).getTime();
  upcomingBirthdays: number;
  upcomingAniversaries: number;
  upcomingReleving: number;
+ userTitle: String = 'Users';
+ clientTitle: String = 'Clients';
 
 constructor() {
   this.upcomingBirthdays = UsersData.filter(user => {
@@ -91,11 +98,7 @@ constructor() {
     {
       name: 'Users',
       data: [10, 50, 26, 50, 38, 60, 50, 25, 61, 80, 40, 60]
-    },
-    {
-      name: 'Sessions',
-      data: [5, 21, 42, 70, 41, 20, 35, 50, 10, 15, 30, 50]
-    },
+    }
   ];
 
   salesSeries: ApexAxisChartSeries = [{

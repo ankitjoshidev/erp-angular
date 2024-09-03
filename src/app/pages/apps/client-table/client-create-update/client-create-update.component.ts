@@ -1,21 +1,21 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { Department } from '../interfaces/department.model';
+import { Client } from '../interfaces/client.model';
 import { Router } from '@angular/router';
 import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
 import { stagger60ms } from 'src/@vex/animations/stagger.animation';
 import { CommonApiService } from 'src/app/services/api.service';
 import { UserSubject } from 'src/app/subjects/userDetail';
-import { DepartmentsData } from 'src/static-data/department';
+import { ClientsData } from 'src/static-data/client';
 
 @Component({
-  selector: 'vex-department-create-update',
-  templateUrl: './department-create-update.component.html',
-  styleUrls: ['./department-create-update.component.scss'],
+  selector: 'vex-client-create-update',
+  templateUrl: './client-create-update.component.html',
+  styleUrls: ['./client-create-update.component.scss'],
   encapsulation: ViewEncapsulation.None,
   animations: [fadeInUp400ms, stagger60ms]
 })
-export class DepartmentCreateUpdateComponent implements OnInit {
+export class ClientCreateUpdateComponent implements OnInit {
 
   static id = 100;
   mode: 'create' | 'update' = 'create';
@@ -34,18 +34,24 @@ export class DepartmentCreateUpdateComponent implements OnInit {
             this.initForm(null);
           }
         } else {
-          this.router.navigate(['/apps/departments']);
+          this.router.navigate(['/apps/clients']);
         }
       });
   }
 
-  initForm(data: Department){
+  initForm(data: Client){
     this.form = this.fb.group({
-      name: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required],
+      active: ["true"],
     });
     if(data){
       this.form.patchValue({
-        name: data.name,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        active: data.active == "true" ? "true": "false"
       });
       this.recordId = data.id;
       this.edit = true;
@@ -63,14 +69,17 @@ export class DepartmentCreateUpdateComponent implements OnInit {
       return false;
     }
     if(this.add){
-      this.form.value['id'] = DepartmentsData.length+1;
-      DepartmentsData.push(this.form.value);
+      this.form.value['id'] = ClientsData.length+1;
+      ClientsData.push(this.form.value);
       this.form.reset();
-      this.router.navigate(['/apps/departments']); 
+      this.router.navigate(['/apps/clients']); 
     } else if (this.edit){
-      DepartmentsData.find(x=>x.id == this.recordId).name = this.form.value.name;
+      ClientsData.find(x=>x.id == this.recordId).firstName = this.form.value.firstName;
+      ClientsData.find(x=>x.id == this.recordId).lastName = this.form.value.lastName;
+      ClientsData.find(x=>x.id == this.recordId).email = this.form.value.email;
+      ClientsData.find(x=>x.id == this.recordId).active = this.form.value.active;
       this.form.reset();
-      this.router.navigate(['/apps/departments']); 
+      this.router.navigate(['/apps/clients']); 
     }
   }
 
@@ -88,6 +97,6 @@ export class DepartmentCreateUpdateComponent implements OnInit {
     return this.mode === 'update';
   }
   cancel() {
-    this.router.navigate(['/apps/departments']);
+    this.router.navigate(['/apps/clients']);
   }
 }

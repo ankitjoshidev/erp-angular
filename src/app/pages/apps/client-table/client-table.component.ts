@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Observable, of, ReplaySubject } from 'rxjs';
-import { Department } from './interfaces/department.model';
+import { Client } from './interfaces/client.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -14,13 +14,13 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Router } from '@angular/router';
 import { CommonApiService } from 'src/app/services/api.service';
 import { UserSubject } from 'src/app/subjects/userDetail';
-import { DepartmentsData } from 'src/static-data/department';
+import { ClientsData } from 'src/static-data/client';
 
 @UntilDestroy()
 @Component({
-  selector: 'vex-department-table',
-  templateUrl: './department-table.component.html',
-  styleUrls: ['./department-table.component.scss'],
+  selector: 'vex-client-table',
+  templateUrl: './client-table.component.html',
+  styleUrls: ['./client-table.component.scss'],
   animations: [
     fadeInUp400ms,
     stagger40ms
@@ -34,22 +34,24 @@ import { DepartmentsData } from 'src/static-data/department';
     }
   ]
 })
-export class DepartmentTableComponent implements OnInit, AfterViewInit {
+export class ClientTableComponent implements OnInit, AfterViewInit {
 
   layoutCtrl = new UntypedFormControl('boxed');
-  subject$: ReplaySubject<Department[]> = new ReplaySubject<Department[]>(1);
-  data$: Observable<Department[]> = this.subject$.asObservable();
-  departments: Department[];
+  subject$: ReplaySubject<Client[]> = new ReplaySubject<Client[]>(1);
+  data$: Observable<Client[]> = this.subject$.asObservable();
+  departments: Client[];
   apiPath: string = 'users'
   @Input()
-  columns: TableColumn<Department>[] = [
-    { label: 'Name', property: 'name', type: 'text', visible: true, cssClasses: ['font-medium'] },
+  columns: TableColumn<Client>[] = [
+    { label: 'First Name', property: 'firstName', type: 'text', visible: true, cssClasses: ['font-medium'] },
+    { label: 'Last Name', property: 'lastName', type: 'text', visible: true, cssClasses: ['font-medium'] },
+    { label: 'Email', property: 'email', type: 'text', visible: true, cssClasses: ['font-medium'] },
     { label: 'Actions', property: 'actions', type: 'button', visible: true }
   ];
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 20, 50];
-  dataSource: MatTableDataSource<Department> | null;
-  selection = new SelectionModel<Department>(true, []);
+  dataSource: MatTableDataSource<Client> | null;
+  selection = new SelectionModel<Client>(true, []);
   searchCtrl = new UntypedFormControl();
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -63,12 +65,12 @@ export class DepartmentTableComponent implements OnInit, AfterViewInit {
   }
   getData() {
     this.dataSource = new MatTableDataSource();
-    this.dataSource.data = DepartmentsData; 
+    this.dataSource.data = ClientsData; 
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
-  ngOnInit() {debugger
+  ngOnInit() { debugger
     this.getData();
     this.searchCtrl.valueChanges.pipe(
       untilDestroyed(this)
@@ -80,17 +82,17 @@ export class DepartmentTableComponent implements OnInit, AfterViewInit {
 
   createUser() {
     this.userSubject.storeUserDetails({action: "add", data: null});
-    this.router.navigate(['/apps/departments/form']);
+    this.router.navigate(['/apps/clients/form']);
   }
 
-  updateUser(user: Department) {
+  updateUser(user: Client) {
     this.userSubject.storeUserDetails({action: "edit", data: user});
-    this.router.navigate(['/apps/departments/form']);
+    this.router.navigate(['/apps/clients/form']);
   }
 
-  deleteUser(user: Department) {
-    const indexToRemove: number = DepartmentsData.findIndex(x=>x.id !== user.id);
-    DepartmentsData.splice(indexToRemove, 1);;
+  deleteUser(user: Client) {
+    const indexToRemove: number = ClientsData.findIndex(x=>x.id !== user.id);
+    ClientsData.splice(indexToRemove, 1);;
     this.getData();
   }
 
