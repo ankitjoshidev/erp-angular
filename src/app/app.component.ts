@@ -145,12 +145,12 @@ export class AppComponent {
               textClass: 'text-cyan-contrast',
             },
           },
-          {
-            type: 'link',
-            label: 'WYSIWYG Editor',
-            route: '/apps/editor',
-            icon: 'mat:chrome_reader_mode'
-          },
+          // {
+          //   type: 'link',
+          //   label: 'WYSIWYG Editor',
+          //   route: '/apps/editor',
+          //   icon: 'mat:chrome_reader_mode'
+          // },
           // {
           //   type: 'link',
           //   label: 'Contacts',

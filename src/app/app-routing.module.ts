@@ -29,41 +29,36 @@ const routes: VexRoutes = [
       },
       {
         path: '',
-        canActivate: [AuthGuardPrivateUser],
+        // canActivate: [AuthGuardPrivateUser],
         loadChildren: () => import('./pages/dashboards/dashboard-analytics/dashboard-analytics.module').then(m => m.DashboardAnalyticsModule),
       },
       {
         path: 'apps',
-        canActivate: [AuthGuardPrivateUser],
+        // canActivate: [AuthGuardPrivateUser],
         children: [
           {
             path: 'social',
-            canActivate: [AuthGuardPrivateUser],
+            // canActivate: [AuthGuardPrivateUser],
             loadChildren: () => import('./pages/apps/social/social.module').then(m => m.SocialModule)
           },
-          // {
-          //   path: 'contacts',
-          //   canActivate: [AuthGuardPrivateUser],
-          //   loadChildren: () => import('./pages/apps/contacts/contacts.module').then(m => m.ContactsModule)
-          // },
           {
             path: 'users',
-            canActivate: [AuthGuardPrivateUser],
+            // canActivate: [AuthGuardPrivateUser],
             loadChildren: () => import('./pages/apps/user-table/user-table.module').then(m => m.UserTableModule),
           },
           {
             path: 'clients',
-            canActivate: [AuthGuardPrivateUser],
+            // canActivate: [AuthGuardPrivateUser],
             loadChildren: () => import('./pages/apps/client-table/client-table.module').then(m => m.ClientTableModule),
           },
           {
             path: 'departments',
-            canActivate: [AuthGuardPrivateUser],
+            // canActivate: [AuthGuardPrivateUser],
             loadChildren: () => import('./pages/apps/department-table/department-table.module').then(m => m.DepartmentTableModule),
           },
           {
             path: 'social',
-            canActivate: [AuthGuardPrivateUser],
+            // canActivate: [AuthGuardPrivateUser],
             loadChildren: () => import('./pages/apps/social/social.module').then(m => m.SocialModule)
           },
           {
@@ -72,10 +67,6 @@ const routes: VexRoutes = [
             data: {
               toolbarShadowEnabled: true
             }
-          },
-          {
-            path: 'editor',
-            loadChildren: () => import('./pages/apps/editor/editor.module').then(m => m.EditorModule),
           }
         ]
       },
